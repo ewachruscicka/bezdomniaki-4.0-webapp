@@ -9,7 +9,7 @@
 <title>Znajdzpsy</title>
 </head>
 
-<body>
+<body bgcolor="dee4ea">
 	<div align="center">
 		<h1>Wyszukiwarka psów <span id="the-title" layout:fragment="pageTitle" /></h1>
 		<form action="lista.jsp" method="post">

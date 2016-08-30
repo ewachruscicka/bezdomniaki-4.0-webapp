@@ -27,6 +27,7 @@
 		Pies [] listaPsow = bezdomniaki.getPsy(miejscowosc);
 		%>
 			<tr>
+				<th></th>
 				<th>Id</th>
 				<th>Imię</th>
 				<th>Data przyjęcia</th>
@@ -34,15 +35,18 @@
 				<th>Nazwa schroniska</th>
 				<th>Miejscowość</th>
 			</tr>
-			<% for (Pies pies : listaPsow) { %>
+			<% int i = 0; 
+			for (Pies pies : listaPsow) { %>
 			<tr>
+				<td><%= i+1%></td> 
+
 				<td><%= pies.getId()%></td>
 				<td><%= pies.getImie()%></td>
 				<td><%= pies.getDataPrzyjecia()%></td>
 				<td><%= pies.getNrChipa()%></td>
 			</tr>
 			<%
-			}
+			i++;}
 			%>
 		</table>
 		<br />
