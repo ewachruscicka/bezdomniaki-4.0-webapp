@@ -6,7 +6,7 @@
 	layout:decorator="layout">
 
 <head>
-<title>Znajdzpsy</title>
+<title>Bezdomniaki</title>
 </head>
 
 <body bgcolor="dee4ea">
