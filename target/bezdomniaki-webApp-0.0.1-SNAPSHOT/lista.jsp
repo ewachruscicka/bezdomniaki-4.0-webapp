@@ -21,9 +21,10 @@
 		<Br />
 		<table border="1" cellpadding="5">
 		<%
-		out.write("<p>"+request.getParameter("city")+"</p>");
+		
 		BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
 		String miejscowosc = request.getParameter("city");
+		out.write("<p>"+miejscowosc+"</p>");
 		Pies [] listaPsow = bezdomniaki.getPsy(miejscowosc);
 		
 		%>
@@ -35,19 +36,19 @@
 				<!--  <th>Nazwa schroniska</th>
 				<th>Miejscowość</th>-->
 			</tr>
-			<!--<%// for (Pies pies : listaPsow) { %>
-			<tr th:each="pies: ${psy}">
-				<td><span th:text="${pies.id}" /></td>
-				<td><span th:text="${pies.imie}" /></td>
-				<td><span th:text="${pies.dataPrzyjecia}" /></td>
-				<td><span th:text="${pies.nrChipa}" /></td>
+			<% for (Pies pies : listaPsow) { %>
+			<tr>
+				<td><%= pies.getId()%></td>
+				<td><%= pies.getImie()%></td>
+				<td><%= pies.getDataPrzyjecia()%></td>
+				<td><%= pies.getNrChipa()%></td>
 			</tr>
 			<%
-			//}
-			%>-->
+			}
+			%>
 		</table>
 		<br />
-		<a href='index'>Powrót do wyszukiwania</a><br />
+		<a href='index.jsp'>Powrót do wyszukiwania</a><br />
 		<br />
 
 	</div>

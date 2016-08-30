@@ -12,13 +12,13 @@ import pl.bezdomniaki.dao.PiesDAO;
 public class BezdomniakiDTO {
 
 	static ApplicationContext context;
-	public static Pies[] psy = null;
+	public Pies[] tablicaPsow;
 
 	public Pies[] getPsy(String miejscowosc) throws SQLException {
 		context = new ClassPathXmlApplicationContext("/bezdomniaki.xml"); 
-		PiesDAO piesDAO = new PiesDAO();
+		PiesDAO piesDAO = (PiesDAO)context.getBean("piesDAO");
 		List<Pies> listaPsow = piesDAO.findByCity(miejscowosc);
-		Pies[] tablicaPsow = listaPsow.toArray(new Pies[0]);
+		tablicaPsow = listaPsow.toArray(new Pies[0]);
 		return tablicaPsow;
 		}
 }

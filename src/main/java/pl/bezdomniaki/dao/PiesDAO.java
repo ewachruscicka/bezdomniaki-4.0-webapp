@@ -21,12 +21,12 @@ public class PiesDAO {
 	private JdbcTemplate jdbcTemplate;
 	Pies wczytanyPies;
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
 	}
 
 	public void create(Pies pies) throws SQLException {
@@ -43,7 +43,9 @@ public class PiesDAO {
 	}
 
 	public void delete(Pies pies) throws SQLException {
-
+		getJdbcTemplate().update(
+				"DELETE FROM Pies WHERE id = ?",
+				 new Object[] {pies.getId()});
 	}
 
 	public List<Pies> listAll() {
@@ -58,7 +60,6 @@ public class PiesDAO {
 					pies1.setNrChipa(rs.getString("nr_chipa"));
 					return pies1;
 			}
-
 		});
 		return listaPsow;
 	}
@@ -88,7 +89,7 @@ public class PiesDAO {
 						return pies1;
 				}
 			});
-			System.out.println("Psy w schronisku w miejscowo≈õci: " + city);
+			System.out.println("Psy w schroniskach w miejscowoúci: " + city);
 			return listaPsow;
 	}
 
