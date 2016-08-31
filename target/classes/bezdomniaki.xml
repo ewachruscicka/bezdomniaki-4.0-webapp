@@ -25,9 +25,9 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<bean id="dataSourceMSSQL"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url" value="jdbc:sqlserver://localhost:1433;DatabaseName=psy;"/>
+		<property name="url" value="jdbc:sqlserver://ewa-mssql.cwkaabbtt9yu.eu-central-1.rds.amazonaws.com:1433;DatabaseName=bezdomniaki;"/>
 		<property name="username" value="ewa" />
-		<property name="password" value="haslo" />
+		<property name="password" value="fedra123" />
 	</bean>
 
 	<!-- All of Spring’s DAO template classes are thread-safe, we only need 
