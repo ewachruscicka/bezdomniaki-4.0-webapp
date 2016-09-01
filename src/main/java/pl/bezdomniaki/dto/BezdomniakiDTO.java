@@ -15,10 +15,11 @@ public class BezdomniakiDTO {
 	public Pies[] tablicaPsow;
 
 	public Pies[] getPsy(String miejscowosc) throws SQLException {
-		context = new ClassPathXmlApplicationContext("/bezdomniaki.xml"); 
+		context = new ClassPathXmlApplicationContext("bezdomniaki.xml"); 
 		PiesDAO piesDAO = (PiesDAO)context.getBean("piesDAO");
 		List<Pies> listaPsow = piesDAO.findByCity(miejscowosc);
 		tablicaPsow = listaPsow.toArray(new Pies[0]);
 		return tablicaPsow;
 		}
 }
+///src/main/webapp/WEB-INF/lib
