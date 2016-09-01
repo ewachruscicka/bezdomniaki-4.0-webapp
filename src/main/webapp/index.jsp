@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout">
 
+<%
+	if (request.getParameter("login") != null && request.getParameter("password") != null) {
+		request.getSession().setAttribute("user", request.getParameter("login"));
+		response.sendRedirect("search.jsp");
+	} else {
+		response.sendRedirect("login.jsp");
+	}
+%>
+
+<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bezdomniaki</title>
 </head>
-
-<body bgcolor="dee4ea">
-	<div align="center">
-		<h1>Wyszukiwarka psów <span id="the-title" layout:fragment="pageTitle" /></h1>
-		<form action="lista.jsp" method="post">
-			Wpisz nazwę miejscowości: <input type="text" name="city" value="" /><br />
-			<br /> <input type="submit" value="Szukaj" />
-		</form>
-	</div>
+<body>
 </body>
 </html>

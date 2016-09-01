@@ -11,6 +11,7 @@
 </head>
 
 <body bgcolor="dee4ea">
+<%@include file="header.jsp"%>
 	<div align="center">
 		<h1>
 			Znalezione psy: <span id="the-title" layout:fragment="pageTitle" />
@@ -49,9 +50,8 @@
 			i++;}
 			%>
 		</table>
-		<br />
-		<a href='index.jsp'>Powrót do wyszukiwania</a><br />
-		<br />
+		<br/>
+		<a href='search.jsp'>Powrót do wyszukiwania</a><br/>
 
 	</div>
 </body>

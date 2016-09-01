@@ -22,4 +22,3 @@ public class BezdomniakiDTO {
 		return tablicaPsow;
 		}
 }
-///src/main/webapp/WEB-INF/lib

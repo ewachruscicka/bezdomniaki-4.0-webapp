@@ -3,15 +3,11 @@ package pl.bezdomniaki.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.sql.PreparedStatement;
 import java.sql.SQLException;
-//import java.sql.Statement;
 import java.util.List;
 
-import org.junit.internal.runners.model.EachTestNotifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
 import pl.bezdomniaki.Pies;

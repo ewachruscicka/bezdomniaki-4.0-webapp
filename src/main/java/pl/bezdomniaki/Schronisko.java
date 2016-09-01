@@ -53,7 +53,5 @@ public class Schronisko {
 				+ ", email=" + email + ", listaPsow=" + listaPsow + "]";
 	}
 	
-	
-	
 }
 

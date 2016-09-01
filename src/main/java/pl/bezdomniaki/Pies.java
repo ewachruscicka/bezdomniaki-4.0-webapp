@@ -2,8 +2,6 @@ package pl.bezdomniaki;
 
 import java.util.Date;
 
-import org.apache.commons.lang3.time.FastDateFormat;
-
 public class Pies {
 	private int id;
 	private String imie;
@@ -46,6 +44,5 @@ public class Pies {
 		return "Pies [id=" + id + ", imie=" + imie + ", dataPrzyjecia=" + dataPrzyjecia + ", idSchroniska="
 				+ idSchroniska + ", nrChipa=" + nrChipa + "]";
 	}
-	
 	
 }
