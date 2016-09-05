@@ -1,5 +1,8 @@
 package pl.bezdomniaki;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pies {
@@ -25,6 +28,17 @@ public class Pies {
 	}
 	public void setDataPrzyjecia(Date fdf) {
 		this.dataPrzyjecia = fdf;
+	}
+	public void setDataPrzyjecia(String fdf) {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
+		Date date;
+		try {
+			date = format.parse(fdf);
+			System.out.println(date); 
+			this.dataPrzyjecia = date;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public int getIdSchroniska() {
 		return idSchroniska;

@@ -1,6 +1,5 @@
 <%@page import="org.junit.internal.runners.model.EachTestNotifier,pl.bezdomniaki.*,pl.bezdomniaki.dao.*,pl.bezdomniaki.dto.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -22,10 +21,8 @@
 		<Br />
 		<table border="1" cellpadding="5">
 		<%
-		BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
 		String miejscowosc = request.getParameter("city");
 		out.write("<p>Miejscowość: "+miejscowosc+"</p>");
-		Pies [] listaPsow = bezdomniaki.getPsy(miejscowosc);
 		%>
 			<tr>
 				<th></th>
@@ -36,11 +33,13 @@
 				<th>Nazwa schroniska</th>
 				<th>Miejscowość</th>
 			</tr>
-			<% int i = 0; 
+			<% 
+			BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
+			Pies [] listaPsow = bezdomniaki.getPsy(miejscowosc);
+			int i = 0; 
 			for (Pies pies : listaPsow) { %>
 			<tr>
 				<td><%= i+1%></td> 
-
 				<td><%= pies.getId()%></td>
 				<td><%= pies.getImie()%></td>
 				<td><%= pies.getDataPrzyjecia()%></td>
@@ -55,4 +54,5 @@
 
 	</div>
 </body>
+
 </html>

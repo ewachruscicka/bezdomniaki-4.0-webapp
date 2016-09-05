@@ -30,5 +30,15 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<servlet>
+	<servlet-name>SzukajServlet</servlet-name>
+	<servlet-class>pl.bezdomniaki.servlets.SzukajServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SzukajServlet</servlet-name>
+		<url-pattern>/szukaj</url-pattern>
+	</servlet-mapping>
 
 </web-app>
