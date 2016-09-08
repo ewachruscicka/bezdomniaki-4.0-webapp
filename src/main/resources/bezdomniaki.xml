@@ -77,11 +77,4 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 		<property name="email" value="zmienione@zmienione.pl" />
 	</bean>
 	
-		<bean id="bezdomniakiDTO" class="pl.bezdomniaki.dto.BezdomniakiDTO">
-		<property name="nazwa" value="Zmienione Schronisko" />
-		<property name="miejscowosc" value="Zmienione Miejsce" />
-		<property name="telefon" value="122222222" />
-		<property name="email" value="zmienione@zmienione.pl" />
-	</bean>
-
 </beans>

@@ -20,10 +20,6 @@
 		<br />
 		<Br />
 		<table border="1" cellpadding="5">
-		<%
-		String miejscowosc = request.getParameter("city");
-		out.write("<p>Miejscowość: "+miejscowosc+"</p>");
-		%>
 			<tr>
 				<th></th>
 				<th>Id</th>
@@ -33,17 +29,20 @@
 				<th>Nazwa schroniska</th>
 				<th>Miejscowość</th>
 			</tr>
-			<% 
+			<%
+			String miejscowosc = request.getParameter("city");
 			BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
-			Pies [] listaPsow = bezdomniaki.getPsy(miejscowosc);
-			int i = 0; 
-			for (Pies pies : listaPsow) { %>
+			Pies[] listaPsow = bezdomniaki.getPsy(miejscowosc);
+		%>
+			<% 
+			int i=0;
+				for (Pies pies : listaPsow) { %>
 			<tr>
 				<td><%= i+1%></td> 
-				<td><%= pies.getId()%></td>
-				<td><%= pies.getImie()%></td>
-				<td><%= pies.getDataPrzyjecia()%></td>
-				<td><%= pies.getNrChipa()%></td>
+				<td><%=pies.getId()%></td>
+				<td><%=pies.getImie()%></td>
+				<td><%=pies.getDataPrzyjecia()%></td>
+				<td><%=pies.getNrChipa()%></td>
 			</tr>
 			<%
 			i++;}

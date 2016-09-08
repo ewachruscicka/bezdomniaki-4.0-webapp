@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page
 	import="org.junit.internal.runners.model.EachTestNotifier,pl.bezdomniaki.*,pl.bezdomniaki.dao.*,pl.bezdomniaki.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,8 +23,11 @@
 	</div>
 	<div align="center" layout:fragment="content">
 
-	
-		
+		<%
+			Pies[] listaPsow = (Pies[]) request.getAttribute("listaPsow");
+			System.out.println(request.getAttribute("listaPsow"));
+		%>
+
 		<br /> <Br />
 		<table border="1" cellpadding="5">
 
@@ -34,21 +38,19 @@
 				<th>Data przyjecia</th>
 				<th>Nr chipa</th>
 			</tr>
-						
-			<c:forEach var="pies" items="${listaPsow}">
-			<tr>
-				<td>1</td>
+
+			<c:forEach var="pies" items="${listaPsow}" varStatus="loopCounter">
+				<td>${loopCounter.count}</td>
 				<td>${pies.getId()}</td>
 				<td>${pies.getImie()}</td>
 				<td>${pies.getDataPrzyjecia()}</td>
 				<td>${pies.getNrChipa()}</td>
-			</tr>
+				</tr>
 			</c:forEach>
 
-
 		</table>
-		<br /> <a href='search.jsp'>Powrót do wyszukiwania</a><br />
 
+		<br /> <a href='search.jsp'>Powrót do wyszukiwania</a><br />
 	</div>
 </body>
 

@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%
-if (request.getMethod().equals("POST")){
-	if (request.getMethod().equals("POST") && request.getParameter("login") != "" && request.getParameter("password") != "") {
-		request.getSession().setAttribute("user", request.getParameter("login"));
-	} 
-	else {
+	String user = (String)session.getAttribute("user");
+	if (user==null || user.isEmpty()){
 		response.sendRedirect("login.jsp");
-	}
-}
+	}		
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -25,7 +21,7 @@ if (request.getMethod().equals("POST")){
 		<h1>
 			Wyszukiwarka psów <span id="the-title" layout:fragment="pageTitle" />
 		</h1>
-		<form action="list2.jsp" method="post">
+		<form action="Szukaj" method="post">
 			Wpisz nazwę miejscowości: <input type="text" name="city" value="" /><br />
 			<br /> <input type="submit" value="Szukaj" />
 		</form>

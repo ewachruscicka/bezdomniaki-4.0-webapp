@@ -38,7 +38,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>SzukajServlet</servlet-name>
-		<url-pattern>/szukaj</url-pattern>
+		<url-pattern>/Szukaj</url-pattern>
 	</servlet-mapping>
 
 </web-app>
