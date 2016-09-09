@@ -17,6 +17,7 @@
 	<%@include file="header.jsp"%>
 	<div align="center">
 		<h1>
+			<font color="red"><%=	request.getAttribute("komunikat")%></font> <br>
 			Znalezione psy (TagLibs): <span id="the-title"
 				layout:fragment="pageTitle" />
 		</h1>
@@ -25,7 +26,6 @@
 
 		<%
 			Pies[] listaPsow = (Pies[]) request.getAttribute("listaPsow");
-			System.out.println(request.getAttribute("listaPsow"));
 		%>
 
 		<br /> <Br />
@@ -37,6 +37,8 @@
 				<th>Imie</th>
 				<th>Data przyjecia</th>
 				<th>Nr chipa</th>
+				<th></th>
+				<th></th>
 			</tr>
 
 			<c:forEach var="pies" items="${listaPsow}" varStatus="loopCounter">
@@ -45,12 +47,14 @@
 				<td>${pies.getImie()}</td>
 				<td>${pies.getDataPrzyjecia()}</td>
 				<td>${pies.getNrChipa()}</td>
+				<td><input type="button" name="edit" value="Edytuj" onclick="Edytuj(${pies.getId()});" ></td>
+				<td><input type="button" name="delete" value="Usuń" onclick="Usun(${pies.getId()});" ></td>
 				</tr>
 			</c:forEach>
 
 		</table>
-
-		<br /> <a href='search.jsp'>Powrót do wyszukiwania</a><br />
+		<br /> <a href='add.jsp'>Dodaj psa</a><br /> <br /> <a
+			href='search.jsp'>Powrót do wyszukiwania</a><br />
 	</div>
 </body>
 

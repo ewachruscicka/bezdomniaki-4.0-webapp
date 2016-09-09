@@ -10,13 +10,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout">
+<%@include file="header.jsp"%>
 
 <head>
 <title>Bezdomniaki</title>
 </head>
 
 <body bgcolor="dee4ea">
-	<%@include file="header.jsp"%>
+	
 	<div align="center">
 		<h1>
 			Wyszukiwarka psów <span id="the-title" layout:fragment="pageTitle" />
@@ -26,6 +27,7 @@
 			<br /> <input type="submit" value="Szukaj" />
 		</form>
 	</div>
+	
 </body>
 
 </html>

@@ -8,9 +8,14 @@ import java.util.Date;
 public class Pies {
 	private int id;
 	private String imie;
-	private Date dataPrzyjecia;
+	private Date dataPrzyjecia; 		
+	/*myDate = new Date();
+	FastDateFormat fdf = FastDateFormat.getInstance("yyyy-MM-dd:HH-mm-ss");
+	currentDate = fdf.format(myDate);
+	;*/
 	private int idSchroniska;
 	private String nrChipa;
+	
 	public int getId() {
 		return id;
 	}
@@ -30,7 +35,8 @@ public class Pies {
 		this.dataPrzyjecia = fdf;
 	}
 	public void setDataPrzyjecia(String fdf) {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss");
+		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		//"yyyy-MM-dd:HH-mm-ss"
 		Date date;
 		try {
 			date = format.parse(fdf);
@@ -46,6 +52,9 @@ public class Pies {
 	public void setIdSchroniska(int idSchroniska) {
 		this.idSchroniska = idSchroniska;
 	}
+	public void setIdSchroniska(String idSchroniska) {
+		this.idSchroniska = Integer.parseInt(idSchroniska);
+	}	
 	public String getNrChipa() {
 		return nrChipa;
 	}

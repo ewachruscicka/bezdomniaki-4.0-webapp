@@ -13,29 +13,77 @@ import pl.bezdomniaki.Pies;
 import pl.bezdomniaki.dto.BezdomniakiDTO;
 
 public class SzukajServlet extends HttpServlet {
-	
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-	super.doGet(req, resp);
-}
-
-@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
-	String miejscowosc = req.getParameter("city");
-	System.out.println("Miejscowosc:" + miejscowosc); //to sie nie wypisuje na koncoli
-	Pies[] listaPsow = null; 
-	try {
-		listaPsow = bezdomniaki.getPsy(miejscowosc);
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	req.setAttribute("listaPsow", listaPsow);
-	//getServletContext().getRequestDispatcher("/list2.jsp").forward(req, resp);
-	RequestDispatcher view = req.getRequestDispatcher("list2.jsp");
-	view.forward(req, resp);
-		//super.doPost(req, resp);
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			processRequest(req, resp);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			processRequest(req, resp);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+	//path = req.getRequestURI();
+	String actionName = req.getServletPath();
+			//path.substring(path.lastIndexOf("/")+1, path.lastIndexOf("."));
+	System.out.println(actionName);
+	
+	if(actionName.equals("/Szukaj") ){
+		String miejscowosc = req.getParameter("city");
+		System.out.println("Miejscowosc:" + miejscowosc);
+		Pies[] listaPsow = null;
+		try {
+			listaPsow = bezdomniaki.getPsy(miejscowosc);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		req.setAttribute("listaPsow", listaPsow);
+		RequestDispatcher view = req.getRequestDispatcher("list2.jsp");
+		view.forward(req, resp);
+	}
+	
+	else if(actionName.equals("/Dodaj") ){
+		Pies pies = new Pies();
+		pies.setImie(req.getParameter("imie"));
+		pies.setDataPrzyjecia(req.getParameter("dataPrzyjecia"));
+		pies.setIdSchroniska(req.getParameter("idSchroniska"));
+		pies.setNrChipa(req.getParameter("nrChipa"));
+		bezdomniaki.addPies(pies);
+		req.setAttribute("komunikat", "Pies zosta³ dodany!");
+		RequestDispatcher view = req.getRequestDispatcher("/Szukaj");
+		view.forward(req, resp);
+	}
+	
+	else if(actionName.equals("/Edytuj")){
+		Pies pies = new Pies();
+		pies.setId(Integer.parseInt(req.getParameter("id")));
+		pies.setImie(req.getParameter("imie"));
+		pies.setDataPrzyjecia(req.getParameter("dataPrzyjecia"));
+		pies.setIdSchroniska(req.getParameter("idSchroniska"));
+		pies.setNrChipa(req.getParameter("nrChipa"));
+		bezdomniaki.editPies(pies);
+		
+	/*if(actionName.equals("editPies?id=X"))
+
+	{
+		BezdomniakiDTO bezdomniaki = new BezdomniakiDTO();
+		req.setAttribute("listaPsow", listaPsow);
+		RequestDispatcher view = req.getRequestDispatcher("list2.jsp");
+		view.forward(req, resp);
+	}*/
+	}
+	}
 }

@@ -40,5 +40,10 @@
 		<servlet-name>SzukajServlet</servlet-name>
 		<url-pattern>/Szukaj</url-pattern>
 	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>SzukajServlet</servlet-name>
+		<url-pattern>/Dodaj</url-pattern>
+	</servlet-mapping>
 
 </web-app>

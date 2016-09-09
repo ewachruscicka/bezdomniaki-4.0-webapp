@@ -13,12 +13,32 @@ public class BezdomniakiDTO {
 
 	static ApplicationContext context;
 	public Pies[] tablicaPsow;
-
+	
 	public Pies[] getPsy(String miejscowosc) throws SQLException {
 		context = new ClassPathXmlApplicationContext("bezdomniaki.xml"); 
 		PiesDAO piesDAO = (PiesDAO)context.getBean("piesDAO");
-		List<Pies> listaPsow = piesDAO.findByCity(miejscowosc);
-		tablicaPsow = listaPsow.toArray(new Pies[0]);
-		return tablicaPsow;
+		
+		if (miejscowosc==null || miejscowosc.isEmpty()){
+			List<Pies> listaPsow = piesDAO.listAll();
+			tablicaPsow = listaPsow.toArray(new Pies[0]);
+			return tablicaPsow;
 		}
+		else {
+			List<Pies> listaPsow = piesDAO.findByCity(miejscowosc);
+			tablicaPsow = listaPsow.toArray(new Pies[0]);
+			return tablicaPsow;
+		}	
+	}
+	
+	public void addPies(Pies pies) throws SQLException{
+		context = new ClassPathXmlApplicationContext("bezdomniaki.xml"); 
+		PiesDAO piesDAO = (PiesDAO)context.getBean("piesDAO");
+		piesDAO.create(pies);
+	}
+	
+	public void editPies(Pies pies) throws SQLException{
+		context = new ClassPathXmlApplicationContext("bezdomniaki.xml"); 
+		PiesDAO piesDAO = (PiesDAO)context.getBean("piesDAO");
+		piesDAO.update(pies);
+	}
 }
